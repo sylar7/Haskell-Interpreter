@@ -204,7 +204,13 @@ calc tks = happyRunIdentity happySomeParser where
 happySeq = happyDontSeq
 
 
+symbols = ["+", "-", "*", "/", "(", ")"]
+keywords = []
+parseExp str = parser (lexer symbols keywords str)
 
+parseInput = do
+  input <- getContents
+  print (parseExp input)
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
 {-# LINE 1 "templates/GenericTemplate.hs" #-}
 {-# LINE 1 "<built-in>" #-}

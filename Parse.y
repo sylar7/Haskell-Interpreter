@@ -33,3 +33,15 @@ Exp : digits        { Number $1 }
     | Exp '/' Exp   { Divide $1 $3 }
     | '(' Exp ')'   { $2 }
 
+
+{
+
+symbols = ["+", "-", "*", "/", "(", ")"]
+keywords = []
+parseExp str = parser (lexer symbols keywords str)
+
+parseInput = do
+  input <- getContents
+  print (parseExp input)
+
+}
